@@ -6,6 +6,6 @@ Description: Interface class
 interface PersonList{
 
 	public void add(Person p);
-	public void get(int index);
+	public Person get(int index);
 
 }

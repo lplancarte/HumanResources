@@ -50,11 +50,36 @@ class Person{
 		return weight;
 	}
 
-	//toString() override
+	//Overrides
 	@Override
 	 public String toString(){
 		//TODO: format database-ready string
 		return String.format("%s %d %d",name, height, weight);
+	}
+
+	@Override
+	public boolean equals(Object o){
+		if(o == null){
+			return false;
+		}
+
+		if(o == this){
+			return true;
+		}
+
+		if(!(o instanceof Person)){
+			return false;
+		}
+
+		Person p;
+		p = (Person) o;
+		if(p.getName() == this.getName() &&
+		   p.getHeight() == this.getHeight() &&
+		   p.getWeight() == this.getWeight()){
+			return true;
+		}else
+			return false;
+
 	}
 
 }
