@@ -73,7 +73,7 @@ class Person{
 
 		Person p;
 		p = (Person) o;
-		if(p.getName() == this.getName() &&
+		if(p.getName().equals(this.getName())&& //LLP: fixed String compare
 		   p.getHeight() == this.getHeight() &&
 		   p.getWeight() == this.getWeight()){
 			return true;
@@ -81,5 +81,6 @@ class Person{
 			return false;
 
 	}
+
 
 }

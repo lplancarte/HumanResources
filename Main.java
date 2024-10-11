@@ -69,7 +69,7 @@ public class Main
 		Scanner fileReader = null;
 		try{
 			fileReader = new Scanner(inputFile);
-			fileReader.nextLine();
+			String nL = fileReader.nextLine();
 			do{
 				String name = fileReader.next();
 				double height = fileReader.nextDouble();
@@ -81,8 +81,13 @@ public class Main
 
 			}while(fileReader.hasNextLine());
 
-
 		}catch(Exception e){ System.out.println(e.getMessage());}
+
+
+
+		System.out.println("TESTING");
+		System.out.println(ps.toString());
+		
 		/*try
 		{
 			FileWriter fileWriterOrder = new FileWriter("outputfile.txt");

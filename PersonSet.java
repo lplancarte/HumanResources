@@ -36,4 +36,26 @@ class PersonSet implements PersonList{
 		return friends.get(index);
 	}
 
+	/**
+	Loops through the friends ArrayList and returns a formatted list to screen.
+	@returns void
+	*/
+	@Override
+	public String toString(){
+		//check if empty
+		if(friends.isEmpty)
+			return "Friend List is Empty";
+		//return first element
+		StringBuilder builder = new StringBuilder(
+											friends.get(0).toString());
+		//if more than one exists loop through
+		if(friends.size() > 1){
+			for(int i = 0; i < friends.size(); i++){
+					builder.append(friends.get(i).toString());
+			}
+		}
+
+		return builder.toString();
+	}
+
 }
