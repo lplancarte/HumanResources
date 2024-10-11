@@ -38,14 +38,19 @@ class PersonSet implements PersonList{
 
 	/**
 	Loops through the friends ArrayList and returns a formatted list to screen.
+	Uses StringBuilder to  build a string using the override toString() method
+	in Person class.
 	@returns void
 	*/
 	@Override
 	public String toString(){
+		String header = String.format("%s %12s %9s","Name", "Weight", "Height");
+		System.out.println(header);
 		//check if empty
-		if(friends.isEmpty)
+		if(friends.isEmpty())
 			return "Friend List is Empty";
-		//return first element
+
+		//add first element
 		StringBuilder builder = new StringBuilder(
 											friends.get(0).toString());
 		//if more than one exists loop through

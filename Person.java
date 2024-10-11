@@ -54,7 +54,7 @@ class Person{
 	@Override
 	 public String toString(){
 		//TODO: format database-ready string
-		return String.format("%s %d %d",name, height, weight);
+		return String.format("%s %9d %9d",name, height, weight);
 	}
 
 	@Override
