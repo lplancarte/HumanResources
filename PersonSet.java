@@ -19,11 +19,12 @@ class PersonSet implements PersonList{
 	public void add(Person p){
 		if(!(friends.contains(p))){
 			friends.add(p);
-			System.out.println(p.toString() + " has been added.");
+			//System.out.println(p.toString() + " has been added.");
 
-		}else{
-			System.out.println("DUPLICATE DETECTED");
 		}
+		/*else{
+			//System.out.println("DUPLICATE DETECTED");
+		}*/
 	}
 
 	/**
@@ -44,18 +45,19 @@ class PersonSet implements PersonList{
 	*/
 	@Override
 	public String toString(){
-		String header = String.format("%s %12s %9s","Name", "Weight", "Height");
-		System.out.println(header);
+		String header = String.format("%s %12s %9s",
+										"Name","Weight","Height\n");
+		//System.out.println(header);
 		//check if empty
 		if(friends.isEmpty())
 			return "Friend List is Empty";
 
 		//add first element
-		StringBuilder builder = new StringBuilder(
-											friends.get(0).toString());
+		StringBuilder builder = new StringBuilder(header);
+		builder.append(friends.get(0).toString());
 		//if more than one exists loop through
 		if(friends.size() > 1){
-			for(int i = 0; i < friends.size(); i++){
+			for(int i = 1; i < friends.size(); i++){
 					builder.append(friends.get(i).toString());
 			}
 		}

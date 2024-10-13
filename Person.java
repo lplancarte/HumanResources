@@ -4,15 +4,15 @@ Modified: 27 SEP 2024 -Added meat/potatoes
 Description: Inheritance
 */
 
-class Person{
+class Person implements Comparable<Person>{
 
 	//Class Member Variables
 	private String name;
-	private int height; //cm
-	private int weight; //kg
+	private double height; //cm
+	private double weight; //kg
 
 	//Constructors
-	public Person(String name, int height, int weight){
+	public Person(String name, double height, double weight){
 		this.name = name;
 		this.height = height;
 		this.weight = weight;
@@ -24,16 +24,22 @@ class Person{
 		weight = 90;
 	}
 
+	public Person(Person prometheus){
+		this.name = prometheus.name;
+		this.height = prometheus.height;
+		this.weight = prometheus.weight;
+	}
+
 	//Setters
 	public void setName(String name){
 		this.name = name;
 	}
 
-	public void setHeight(int height){
+	public void setHeight(double height){
 		this.height = height;
 	}
 
-	public void setWeight(int weight){
+	public void setWeight(double weight){
 		this.weight = weight;
 	}
 
@@ -42,11 +48,11 @@ class Person{
 		return name;
 	}
 
-	public int getHeight(){
+	public double getHeight(){
 		return height;
 	}
 
-	public int getWeight(){
+	public double getWeight(){
 		return weight;
 	}
 
@@ -54,7 +60,7 @@ class Person{
 	@Override
 	 public String toString(){
 		//TODO: format database-ready string
-		return String.format("%s %9d %9d",name, height, weight);
+		return String.format("%-6s %9.0f %9.0f\n",name, height, weight);
 	}
 
 	@Override
@@ -80,6 +86,16 @@ class Person{
 		}else
 			return false;
 
+	}
+
+	/**
+	0: equal
+	<0 : less than
+	>0 : greater than
+	*/
+	@Override
+	public int compareTo(Person cain){
+		return this.getName().compareTo(cain.getName());
 	}
 
 

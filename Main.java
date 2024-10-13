@@ -43,16 +43,16 @@ public class Main
 	{
 
 		//A
-		Person mario = new Person("Mario",187,95);
+		//Person mario = new Person("Mario",187,95);
 
 		//B
-		PersonSet ps = new PersonSet();
-		ps.add(mario);
-		Person marioTest = ps.get(0);
-		System.out.println("PersonSet.Get(index:0)= "+marioTest.toString());
+		//PersonSet ps = new PersonSet();
+		//ps.add(mario);
+		//Person marioTest = ps.get(0);
+		//System.out.println("PersonSet.Get(index:0)= "+marioTest.toString());
 
 		//C
-		System.out.println("\nRead data from file and Display to Screen:");
+		//System.out.println("\nRead data from file and Display to Screen:");
 		/*
 		// Don't overcomplicate the data
 		// reading. After skipping the
@@ -61,34 +61,79 @@ public class Main
 		// character info, assuming your
 		// Scanner is named "fileReader"
 		*/
+
+		/**
+			PART 2
+			A)Instantiate a PersonOrderedSet and PersonImperialSet
+			B)Read in Data, populate both sets objects with Persons
+			C)Write out data into two separate output files
+				1) Ordered		2)Imperial
+			D)Output formatted data with header to separate files named:
+				hr_imperial_set_output.txt &&	hr_ordered_set_output.txt
+		*/
+		//A
+		PersonOrderedSet pos = new PersonOrderedSet();
+		System.out.println("PersonOrderedSet Object Created.");
+		PersonImperialSet pis = new PersonImperialSet();
+		System.out.println("PersonImperialSet Object Created.");
+		//PersonSet ps = new PersonSet(); //TESTING
+		//B
+		Person romulus = null;
+		Person remus = null;
 		if(args.length < 1){
 			System.out.println("Missing Argument. File Name Required.");
 			System.exit(1);
 		}
 		File inputFile = new File(args[0].toString());
 		Scanner fileReader = null;
+		System.out.println("Reading File: "+ inputFile);
 		try{
 			fileReader = new Scanner(inputFile);
 			String nL = fileReader.nextLine();
 			do{
-				String name = fileReader.next();
-				double height = fileReader.nextDouble();
-				double weight = fileReader.nextDouble();
-				System.out.println(name);
-				System.out.println(height);
-				System.out.println(weight);
-				System.out.println();
+				//String name = fileReader.next();
+				//double height = fileReader.nextDouble();
+				//double weight = fileReader.nextDouble();
+				//System.out.println(name);
+				//System.out.println(height);
+				//System.out.println(weight);
+				//System.out.println();
+				try{
+					romulus = new Person(fileReader.next(),
+									fileReader.nextDouble(),
+									fileReader.nextDouble());
+					if(romulus == null)
+						break;
+					remus = new Person(romulus);
+					//ps.add(romulus); //TESTING
+					//Add to PersonOrderedSet
+					pos.add(romulus);
 
+					//assert to check the copy of romulus is remus
+					boolean personObjectCopied = romulus.equals(remus);
+					assert personObjectCopied;
+
+					//Add to PersonImperialSet
+					pis.add(remus);
+				}catch(Exception e){};
 			}while(fileReader.hasNextLine());
 
 		}catch(Exception e){ System.out.println(e.getMessage());}
 
-
-
-		System.out.println("TESTING");
-		System.out.println(ps.toString());
+		System.out.println("Alphabetical Order:");
+		System.out.println(pos.toString());
+		System.out.println("Metric Conversion:");
+		System.out.println(pis.toString());
 		
-		/*try
+		System.out.println("Saving Files to Disk");
+		writeToFile("hr_ordered_set_output.txt",pos);
+		System.out.println("hr_ordered_set_output.txt SAVED.");
+		writeToFile("hr_imperial_set_output.txt",pis);
+		System.out.println("hr_ordered_set_output.txt SAVED.");
+		//System.out.println("TESTING");
+		//System.out.println(ps.toString());
+		
+		/*
 		{
 			FileWriter fileWriterOrder = new FileWriter("outputfile.txt");
 			fileWriterOrder.write("testing");
@@ -100,6 +145,27 @@ public class Main
 			System.out.println(e);
 			System.exit(1);
 		}*/
+	}
+
+	/**
+	Writes data to output file. Uses the superclass PersonSet to write
+	correct data to file. 
+	@param String outPutFileName - name of the file to use to save to disk
+	@param PersonSet ps - Can be either of the subclass of PersonSet
+	@returns VOID
+	*/
+	public static void writeToFile(String outPutFileName, PersonSet ps){
+		try{
+			FileWriter fileWriterOrder = new FileWriter(outPutFileName);
+			fileWriterOrder.write(ps.toString());
+			fileWriterOrder.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+			System.out.println(e);
+			System.exit(1);
+		}
 	}
 }
 
