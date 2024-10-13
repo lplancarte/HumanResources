@@ -3,7 +3,7 @@ Created:  26 SEP 2024
 Modified: 27 SEP 2024 -Added meat/potatoes
 Description: Inheritance
 */
-
+import java.text.DecimalFormat;
 class Person implements Comparable<Person>{
 
 	//Class Member Variables
@@ -60,8 +60,17 @@ class Person implements Comparable<Person>{
 	@Override
 	 public String toString(){
 		//TODO: format database-ready string
-		return String.format("%-6s %9.0f %9.0f\n",name, height, weight);
+		DecimalFormat df = new DecimalFormat("0.##");
+		String h = df.format(height);
+		String w = df.format(weight);
+		//return name + "   " + h + "   " + w +"\n";
+		return String.format("%-6s %9s %9s\n", name, h, w);
+		//return String.format("%-6s %9s %9f\n",
+		//name,
+		//height,
+		//weight;
 	}
+
 
 	@Override
 	public boolean equals(Object o){

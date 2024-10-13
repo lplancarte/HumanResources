@@ -6,15 +6,22 @@ Created: 11 Oct 2024
 
 class PersonImperialSet extends PersonSet{
 
+	public PersonImperialSet(){
+		super.header = String.format("%-6s %12s %9s\n",
+			"Name", "Weight (lbs)", "Height (in)"
+		);
+	}
+
 	@Override
 	public void add(Person p){
 		//Convert height from cm to in
-		p.setHeight(p.getHeight()/0.39);
+		p.setHeight(p.getHeight()/2.54);
 		//Convert weight from kg to lbs
-		p.setWeight(p.getWeight()/2.20);
+		p.setWeight(p.getWeight()*2.205);
 		//add
 		super.add(p);
 	}
+
 
 }
 

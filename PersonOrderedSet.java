@@ -5,6 +5,11 @@ Created: 11 Oct 2024
 */
 import java.util.Collections;
 class PersonOrderedSet extends PersonSet{
+	public PersonOrderedSet(){
+		super.header = String.format("%-6s %12s %9s\n",
+			"Name", "Weight (kgs)", "Height (cm)"
+		);
+	}
 
 	@Override
 	public void add(Person p){
@@ -13,7 +18,7 @@ class PersonOrderedSet extends PersonSet{
 		super.add(p);
 		//Sort
 		Collections.sort(super.friends);
-		
+
 
 	}
 

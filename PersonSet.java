@@ -10,6 +10,7 @@ class PersonSet implements PersonList{
 
 	protected ArrayList<Person> friends = new ArrayList<Person>(10);
 
+	protected String header = null;
 	/**
 	Adds a Person to the friends ArrayList. Uses built in ArrayList
 	function contains to checks for duplicates.
@@ -45,8 +46,8 @@ class PersonSet implements PersonList{
 	*/
 	@Override
 	public String toString(){
-		String header = String.format("%s %12s %9s",
-										"Name","Weight","Height\n");
+		//String header = String.format("%s %12s %9s",
+		//								"Name","Weight","Height\n");
 		//System.out.println(header);
 		//check if empty
 		if(friends.isEmpty())
