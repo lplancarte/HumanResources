@@ -1,4 +1,4 @@
-Name   Weight (kgs) Height (cm)
+Name    Height (cm) Weight (kg)
 Bowser       310       726
 Luigi        158        83
 Mario        155        90

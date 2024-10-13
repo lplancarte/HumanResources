@@ -59,7 +59,10 @@ class Person implements Comparable<Person>{
 	//Overrides
 	@Override
 	 public String toString(){
-		//TODO: format database-ready string
+		/*
+		https://stackoverflow.com/
+		questions/433958/java-decimal-formatting-using-string-format
+		*/
 		DecimalFormat df = new DecimalFormat("0.##");
 		String h = df.format(height);
 		String w = df.format(weight);

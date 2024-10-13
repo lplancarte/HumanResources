@@ -6,11 +6,21 @@ Description: PersonSet
 */
 import java.util.ArrayList;
 
+/**
+PersonSet serves as a super class to PersonOrderedSet and PersonImperialSet.
+@Class Variables
+	ArrayList<Person> friends - ArrayList that keeps Person objects.
+	String header - To implement different headers in toString() override, 
+					the class uses a protetected class variable that can be 
+					accesed by a sub-class.
+*/
+
 class PersonSet implements PersonList{
 
 	protected ArrayList<Person> friends = new ArrayList<Person>(10);
 
 	protected String header = null;
+
 	/**
 	Adds a Person to the friends ArrayList. Uses built in ArrayList
 	function contains to checks for duplicates.

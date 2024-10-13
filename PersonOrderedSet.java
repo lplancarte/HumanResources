@@ -7,7 +7,7 @@ import java.util.Collections;
 class PersonOrderedSet extends PersonSet{
 	public PersonOrderedSet(){
 		super.header = String.format("%-6s %12s %9s\n",
-			"Name", "Weight (kgs)", "Height (cm)"
+			"Name", "Height (cm)", "Weight (kg)"
 		);
 	}
 
